@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Valentinstag 💘</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ffb6c1, #ffdde1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Comic Sans MS', cursive;
+        overflow: hidden;
+        flex-direction: column;
+        text-align: center;
+    }
+    h1 {
+        color: #b30059;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    img.dackel {
+        width: 220px;
+        margin-bottom: 30px;
+    }
+    button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 0 10px;
+    }
+    #ja {
+        background-color: #ff4d88;
+        color: white;
+    }
+    #nein {
+        background-color: #555;
+        color: white;
+    }
+    .heart-screen {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        animation: fadeIn 1s ease;
+    }
+    .heart {
+        font-size: 150px;
+        animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<h1>Willst du mein Valentinstag-Date sein?</h1>
+<img class="dackel" src="https://i.imgur.com/WxM7v1y.png" alt="Süßer Dackel mit Herz">
+
+<div>
+    <button id="ja">Ja 💕</button>
+    <button id="nein">Nein 🙃</button>
+</div>
+
+<div class="heart-screen" id="antwort">
+    <div class="heart">❤️</div>
+    <h1>Wir sehen uns am 14.02 💘</h1>
+</div>
+
+<script>
+    const neinBtn = document.getElementById("nein");
+    const jaBtn = document.getElementById("ja");
+    const antwort = document.getElementById("antwort");
+
+    // Nein-Button bewegt sich bei Tippen (iPhone-optimiert)
+    neinBtn.addEventListener("click", () => {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
+        neinBtn.style.position = "absolute";
+        neinBtn.style.left = x + "px";
+        neinBtn.style.top = y + "px";
+        neinBtn.style.transform = `scale(${Math.random() + 1})`;
+    });
+
+    // Ja-Button zeigt Herz
+    jaBtn.addEventListener("click", () => {
+        document.querySelector('h1').style.display = "none";
+        document.querySelector('img.dackel').style.display = "none";
+        document.querySelector('div').style.display = "none"; // Buttons ausblenden
+        antwort.style.display = "flex";
+    });
+</script>
+
+</body>
+</html>
